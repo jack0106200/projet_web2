@@ -1,0 +1,12 @@
+.bt{
+    width: 126px;
+    height: 45px;
+    border-style: solid;
+	border-radius: 20px;
+    border-width: 1px;
+    border-color:black;
+    background-color:rgb(150, 238, 19);
+    box-shadow: 0 5px 15px rgba(46, 45, 45, 0.35);
+    position: relative;
+    overflow: hidden;
+}

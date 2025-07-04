@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifier un étudiant</title>
+  <link rel="icon" href="images/fevicon/Logo_UNILUK.png" type="image/gif" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./modifier.css">
+  <link rel="stylesheet" href="ico.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('fetch_etudiants_vue.php')
+        .then(res => res.json())
+        .then(data => {
+          const select = document.getElementById('etudiant_select');
+          data.forEach(e => {
+            const option = document.createElement('option');
+            option.value = e.id_etudiant;
+            option.textContent = `${e.nom} ${e.post_nom} ${e.prenom}`;
+            option.dataset.id_inscription = e.id_inscription;
+            select.appendChild(option);
+          });
+        });
+
+      document.getElementById('etudiant_select').addEventListener('change', function () {
+        const id_etudiant = this.value;
+        const id_inscription = this.selectedOptions[0].dataset.id_inscription;
+        if (!id_etudiant) return;
+
+        fetch(`fetch_etudiant_unique.php?id_etudiant=${id_etudiant}`)
+          .then(res => res.json())
+          .then(e => {
+            document.getElementById('id_etudiant').value = id_etudiant;
+            document.getElementById('id_inscription').value = id_inscription;
+            document.getElementById('nom').value = e.nom;
+            document.getElementById('post_nom').value = e.post_nom;
+            document.getElementById('prenom').value = e.prenom;
+            document.getElementById('date_naissance').value = e.date_naissance;
+            document.getElementById('sexe').value = e.sexe;
+            document.getElementById('adresse').value = e.adresse;
+            document.getElementById('email').value = e.email;
+            document.getElementById('telephone').value = e.telephone;
+            document.getElementById('nom_base').value = e.nom_base;
+            document.getElementById('nom_parcours').value = e.nom_parcours;
+            document.getElementById('nom_niveau').value = e.nom_niveau;
+            document.getElementById('annee').value = e.annee;
+          });
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">UNILUK</div>
+    <ul class="nav-links">
+      <li><a href="interface.php">Accueil</a></li>
+      <li><a href="institution.php">Institution</a></li>
+      <li><a href="./comentaire.php">Commentaire</a></li>
+    </ul>
+  </nav>
+
+
+  <div class="container">
+    <h2>MODIFIER TON INSCRIPTION</h2>
+
+    <select id="etudiant_select">
+      <option value=""> Choisir un étudiant </option>
+    </select>
+
+    <form method="POST" action="modifier_nouveau.php" enctype="multipart/form-data">
+      <input type="hidden" name="id_etudiant" id="id_etudiant">
+      <input type="hidden" name="id_inscription" id="id_inscription">
+
+      <label>Nom :</label>
+      <input type="text" name="nom" id="nom">
+      <label>Post-nom :</label>
+      <input type="text" name="post_nom" id="post_nom">
+      <label>Prénom :</label>
+      <input type="text" name="prenom" id="prenom">
+      <label>Date de naissance :</label>
+      <input type="date" name="date_naissance" id="date_naissance">
+      <label>Sexe :</label>
+      <select name="sexe" id="sexe">
+        <option value="">-- Choisir --</option>
+        <option value="Masculin">Masculin</option>
+        <option value="Féminin">Féminin</option>
+      </select>
+      <label>Adresse :</label>
+      <input type="text" name="adresse" id="adresse">
+      <label>Email :</label>
+      <input type="email" name="email" id="email">
+      <label>Téléphone :</label>
+      <input type="text" name="telephone" id="telephone">
+      <label>Base :</label>
+      <input type="text" name="nom_base" id="nom_base">
+      <label>Parcours :</label>
+      <input type="text" name="nom_parcours" id="nom_parcours">
+      <label>Niveau :</label>
+      <input type="text" name="nom_niveau" id="nom_niveau">
+      <label>Année :</label>
+      <input type="text" name="annee" id="annee">
+      <label>Photo :</label>
+      <input type="file" name="photo">
+      <button type="submit">Mettre à jour</button>
+    </form>
+  </div>
+  <div id="alert-box" class="alert-box" style="display: none;"></div>
+
+ 
+<!-- end section -->
+<!-- Modal -->
+<div class="modal fade" id="search_bar" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Model search bar -->
+<!-- footer -->
+<footer class="footer-container123">
+  <div class="container-fuild">
+    <div class="row">
+      <div class="map_section">
+        <div id="map"></div>
+      </div>
+      <div class="footer_blog" style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>À propos</h2>
+            <p>La Polyclinique UNILUK offre des soins accessibles et de qualité à toute la communauté. Un service médical moderne et humain.</p>
+            <ul class="social_icons">
+              <li><a class="ico" href="http://facebook.com/universiteAdeventistedeLukanga/" title="Facebook" target="_blank"><img src="images/logos/facebook.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://www.google.com/search?client=ms-android-transsion&sca_esv=b88ca0c3cb826eae&sxsrf=AE3TifOZrdP_Kdp6G3_h7awhI3Hm1KjrjQ:1748335832577&q=uniluk&uds=AOm0WdEdnsx__EwxHHINK9nscFhtSlL7RV3CwXypLtQL6d835EHpquNB0c_koD2ncVodu6mdfbI2AMdg20rjQYG4sXpCxY3s2QalzE_r9iRRXfDdPX12E-6FXLcKf9hlk_kftKxAfRelakAc3Np_1h1Gud6nT14JGT9wDYKE8ge7Z3qpWp_8PhLi6d783ind26kV42nJoiIcufd5sL6Bp_hayJBTa9P0xUZaBv7gMvmBcRJT90jnw8Xmo9qU5hWTZm9jrwUeiOeDbd2CjGLF8CpNuKN7TikSz1bvMkLrzHPneIkza-g1Lm3XjafSAudGLhssv6WtRkfESoCWeCl3ymxOmajJnHq17Gc_mxHr12823Qns3OrWfXq6ojiRxwuQv5JeKY1YFZUk&si=AMgyJEsS9yFPUNnJcpkaSNMRXqlE3FckxcCTZL41OY187f2YnQ6CVThi8Ee3LscCGe-p5PWsVtZMlYBvDaUPJB1xg0E7D7uoCacPg8acx1NnUmCHC7UJ_Hk%3D&sa=X&ved=2ahUKEwjp0f7BosONAxXPZ0EAHemwGwMQk8gLegQIHxAB&ictx=1&biw=360&bih=713&dpr=2" title="Google+" target="_blank"><img src="images/logos/chrome_6125000.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://x.com/uniluk1" title="Twitter" target="_blank"><img src="images/logos/twitter_4494481.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://www.instagram.com/uniluk1/" title="Instagram" target="_blank"><img src="images/logos/instagram_4494489.png" alt="logos" class="ico"></a></li>
+                
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Liens utiles</h2>
+            <ul class="footer-menu">
+              <li><a href="#"><i class="fa fa-angle-right"></i> Qui sommes-nous</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Conditions générales</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Politique de confidentialité</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Actualités</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Services</h2>
+            <ul class="footer-menu">
+              <li><a href="#"><i class="fa fa-angle-right"></i> Soins médicaux</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Consultations</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Vaccination</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Analyse en laboratoire</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Urgences</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Nous contacter</h2>
+            <p>Nord-Kivu/Butembo,  Lukanga 'Université Adventiste de Lukanga'<br> Lukanga, RD Congo<br>
+              <span style="font-size:18px;"><a href="tel:+243812345678">+243 823 881 864</a></span>
+            </p>
+
+            <div class="footer_mail-section">
+              <form>
+                <fieldset>
+                  <div class="field">
+                    <input placeholder="Votre adresse e-mail" type="text">
+                    <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="admin-access-box" style="margin-top: 20px;">
+              <h3>Espace Administrateur</h3>
+              <p>Réservé au personnel autorisé pour la gestion des inscriptions.</p>
+              <a href="Admi/admi_connect.php" class="btn-admin-connexion">Se connecter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cprt">
+        <p>Université Adventiste de Lukanga © Tous droits réservés</p>
+      </div>
+    </div>
+  </div>
+</footer>
+  <script src="modifier.js"></script>
+</body>
+</html>

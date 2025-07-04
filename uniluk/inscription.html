@@ -1,0 +1,226 @@
+<!-- inscription.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription des Étudiants</title>
+  <link rel="icon" href="images/fevicon/Logo_UNILUK.png" type="image/gif" />
+  <link rel="stylesheet" href="inscription.css">
+  <link rel="stylesheet" href="ico.css">
+</head>
+<body>
+
+  <!-- Barre de navigation horizontale -->
+  <header>
+    <ul>
+      <li><a href="interface.php" class="active">Accueil</a></li>
+      <li><a href="https://www.google.com/search?q=uniluk">Institution</a></li>
+      <li><a href="service.php">Service</a></li>
+    </ul>
+  </header>
+
+  <!-- Corps principal avec menu vertical + formulaire -->
+  <main>
+    <!-- Menu vertical à gauche -->
+    <div class="menu_side">
+      <ul>
+        <li><a href="interface.php">Accueil</a></li>
+        <li><a href="https://www.google.com/search?q=uniluk">Institution</a></li>
+        <li><a href="service.php">Service</a></li>
+      </ul>
+    </div>
+
+    <!-- Formulaire dans la zone centrale -->
+    <div class="content">
+      <h2>Formulaire d'inscription</h2>
+      <form id="formInscription" action="Inscription.php" enctype="multipart/form-data" method="POST">
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="post_nom" placeholder="Post-nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+
+        <select name="sexe" required>
+          <option value="">Sexe</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Féminin">Féminin</option>
+        </select>
+
+        <label>Date de naissance :
+          <input type="date" name="date_naissance" required>
+        </label>
+
+        <input type="text" name="adresse" placeholder="Adresse" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="telephone" placeholder="Téléphone" required>
+
+        <label>Base :</label>
+        <select name="base" id="base" required></select>
+
+        <label>Parcours :</label>
+        <select name="parcours" id="parcours" required></select>
+
+        <label>Niveau :</label>
+        <select name="niveau" id="niveau" required></select>
+
+        <label>Année académique :</label>
+        <select name="annee" id="annee" required></select>
+
+        <h2>Ajouter votre photo</h2>
+        <input type="file" name="photo" id="photo" accept="image/*">
+        <br>
+        <img id="preview" alt="Aperçu de la photo sélectionnée" />
+
+        <br><br>
+        <button type="submit">S'inscrire</button>
+        <button type="button" onclick="window.location.href='modifier.html'">Modifier</button>
+      </form>
+
+      <div id="message"></div>
+    </div>
+  </main>
+<footer class="footer-container123">
+  <div class="container-fuild">
+    <div class="row">
+      <div class="map_section">
+        <div id="map"></div>
+      </div>
+      <div class="footer_blog" style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>À propos</h2>
+            <p>La Polyclinique UNILUK offre des soins accessibles et de qualité à toute la communauté. Un service médical moderne et humain.</p>
+            <ul class="social_icons">
+              <li><a class="ico" href="http://facebook.com/universiteAdeventistedeLukanga/" title="Facebook" target="_blank"><img src="images/logos/facebook.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://www.google.com/search?client=ms-android-transsion&sca_esv=b88ca0c3cb826eae&sxsrf=AE3TifOZrdP_Kdp6G3_h7awhI3Hm1KjrjQ:1748335832577&q=uniluk&uds=AOm0WdEdnsx__EwxHHINK9nscFhtSlL7RV3CwXypLtQL6d835EHpquNB0c_koD2ncVodu6mdfbI2AMdg20rjQYG4sXpCxY3s2QalzE_r9iRRXfDdPX12E-6FXLcKf9hlk_kftKxAfRelakAc3Np_1h1Gud6nT14JGT9wDYKE8ge7Z3qpWp_8PhLi6d783ind26kV42nJoiIcufd5sL6Bp_hayJBTa9P0xUZaBv7gMvmBcRJT90jnw8Xmo9qU5hWTZm9jrwUeiOeDbd2CjGLF8CpNuKN7TikSz1bvMkLrzHPneIkza-g1Lm3XjafSAudGLhssv6WtRkfESoCWeCl3ymxOmajJnHq17Gc_mxHr12823Qns3OrWfXq6ojiRxwuQv5JeKY1YFZUk&si=AMgyJEsS9yFPUNnJcpkaSNMRXqlE3FckxcCTZL41OY187f2YnQ6CVThi8Ee3LscCGe-p5PWsVtZMlYBvDaUPJB1xg0E7D7uoCacPg8acx1NnUmCHC7UJ_Hk%3D&sa=X&ved=2ahUKEwjp0f7BosONAxXPZ0EAHemwGwMQk8gLegQIHxAB&ictx=1&biw=360&bih=713&dpr=2" title="Google+" target="_blank"><img src="images/logos/chrome_6125000.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://x.com/uniluk1" title="Twitter" target="_blank"><img src="images/logos/twitter_4494481.png" alt="logos" class="ico"></a></li>
+                <li><a class="ico" href="https://www.instagram.com/uniluk1/" title="Instagram" target="_blank"><img src="images/logos/instagram_4494489.png" alt="logos" class="ico"></a></li>
+                
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Liens utiles</h2>
+            <ul class="footer-menu">
+              <li><a href="#"><i class="fa fa-angle-right"></i> Qui sommes-nous</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Conditions générales</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Politique de confidentialité</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Actualités</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Services</h2>
+            <ul class="footer-menu">
+              <li><a href="#"><i class="fa fa-angle-right"></i> Soins médicaux</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Consultations</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Vaccination</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Analyse en laboratoire</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i> Urgences</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="main-heading left_text">
+            <h2>Nous contacter</h2>
+            <p>Nord-Kivu/Butembo,  Lukanga 'Université Adventiste de Lukanga'<br> Lukanga, RD Congo<br>
+              <span style="font-size:18px;"><a href="tel:+243812345678">+243 823 881 864</a></span>
+            </p>
+
+            <div class="footer_mail-section">
+              <form>
+                <fieldset>
+                  <div class="field">
+                    <input placeholder="Votre adresse e-mail" type="text">
+                    <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="admin-access-box" style="margin-top: 20px;">
+              <h3>Espace Administrateur</h3>
+              <p>Réservé au personnel autorisé pour la gestion des inscriptions.</p>
+              <a href="Admi/admi_connect.php" class="btn-admin-connexion">Se connecter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cprt">
+        <p>Université Adventiste de Lukanga © Tous droits réservés</p>
+      </div>
+    </div>
+  </div>
+</footer>
+  <script src="js/inscription.js"></script>
+  <!-- Google Maps API (si utilisée dans ton JS) -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'inscription</title>
+    <link rel="stylesheet" href="inscription.css">
+
+</head>
+<body>
+
+<h2>Formulaire d'inscription</h2>
+
+<form action="inscription.php" method="post" enctype="multipart/form-data">
+    <input type="text" name="nom" placeholder="Nom" required><br>
+    <input type="text" name="prenom" placeholder="Prénom" required><br>
+    
+    <label>Sexe :</label>
+    <select name="sexe" required>
+        <option value="">-- Choisissez --</option>
+        <option value="M">Masculin</option>
+        <option value="F">Féminin</option>
+    </select><br>
+
+    <label>Date de naissance :</label>
+    <input type="date" name="date_naissance" required><br>
+
+    <input type="text" name="adresse" placeholder="Adresse" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="tel" name="telephone" placeholder="Téléphone" required><br>
+
+    <label for="base">Institution :</label>
+    <select name="base" id="base" required>
+        <option value="">-- Choisissez une institution --</option>
+       //  chargée dynamiquement via JS 
+    </select><br>
+
+    <label for="parcours">Filière / Faculté :</label>
+    <select name="parcours" id="parcours" required>
+        <option value="">-- Choisissez une filière/faculté --</option>
+    </select><br>
+
+    <label for="annee">Année académique :</label>
+    <select name="annee" id="annee" required>
+        <option value="">-- Choisissez une année --</option>
+    </select><br>
+
+    <label for="niveau">Niveau :</label>
+    <select name="niveau" id="niveau" required>
+        <option value="">-- Choisissez un niveau --</option>
+    </select><br>
+
+    <label for="photo">Photo :</label>
+    <input type="file" name="photo" id="photo" accept="image/*" required><br>
+    <img id="photoPreview" src="#" alt="Aperçu photo"><br>
+
+    <button type="submit">S'inscrire</button>
+</form>
+
+<script src="js/inscription.js"></script>
+</body>
+</html> -->
